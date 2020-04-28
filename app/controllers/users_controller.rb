@@ -11,7 +11,7 @@ class UsersController < ApplicationController
             @user.save
             session[:user_id] = @user.id
             
-            erb :welcome
+            erb :'/users/show'
         else
             redirect '/signup'
         end
