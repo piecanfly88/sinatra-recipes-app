@@ -24,9 +24,16 @@ class RecipesController < ApplicationController
 
     get '/recipes/:id/edit' do
         @recipe = Recipe.find(params[:id])
-        
+
         erb :'/recipes/edit'
     end
 
-    
+    patch '/recipes/:id' do
+        @recipe = Recipe.find(params[:id])
+
+        @recipe.update(title: params[:title], ingredients: params[:ingredients], instructions: params[:instructions])
+
+        redirect "/recipes/#{@recipe.id}"
+    end 
+
 end
