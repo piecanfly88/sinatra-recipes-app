@@ -1,4 +1,5 @@
 <h2> Recipe Show Page </h2>
 <h4> <%= @recipe.title %> </h4>
 Ingredients: <%= @recipe.ingredients %><br>
-Instructions: <%= @recipe.instructions %>
+Instructions: <%= @recipe.instructions %><br>
+ <a href="/recipes/<%= @recipe.id %>/edit">edit</a> 
