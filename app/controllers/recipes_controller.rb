@@ -29,7 +29,13 @@ class RecipesController < ApplicationController
 
         @recipe = Recipe.find(params[:id])
 
-        erb :'/recipes/edit'
+        if authorized_to_edit?(@recipe)
+            erb :'/recipes/edit'
+        else
+            redirect "/users/#{current_user.id}"
+        end
+
+       
     end
 
     patch '/recipes/:id' do
