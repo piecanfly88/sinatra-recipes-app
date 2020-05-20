@@ -7,6 +7,8 @@ class RecipesController < ApplicationController
     end
 
     get '/recipes/new' do
+        if_not_logged_in_redirect
+
         erb :'/recipes/create_recipe'
     end
 
@@ -23,12 +25,16 @@ class RecipesController < ApplicationController
     end
 
     get '/recipes/:id/edit' do
+        if_not_logged_in_redirect
+
         @recipe = Recipe.find(params[:id])
 
         erb :'/recipes/edit'
     end
 
     patch '/recipes/:id' do
+        if_not_logged_in_redirect
+
         @recipe = Recipe.find(params[:id])
 
         @recipe.update(title: params[:title], ingredients: params[:ingredients], instructions: params[:instructions])
