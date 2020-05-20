@@ -2,7 +2,7 @@
 <h4> <%= @recipe.title %> </h4>
 Ingredients: <%= @recipe.ingredients %><br>
 Instructions: <%= @recipe.instructions %><br>
-<% if logged_in? %> 
+<% if logged_in? && authorized_to_edit?(@recipe) %> 
  <a href="/recipes/<%= @recipe.id %>/edit">edit</a>
  <form action="/recipe/<%= @recipe.id %>/" method="post">
     <input type="hidden" name="_method" value="DELETE">
