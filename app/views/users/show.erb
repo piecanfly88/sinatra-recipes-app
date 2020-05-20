@@ -1,3 +1,9 @@
 <h2> Welcome, <%= @user.username %>! </h2> 
 
 <b> Email: </b> <%= @user.email %>
+
+<h4>Recipes You Own:</h4>
+
+<% @user.recipes.each do |recipe| %>
+    <p><a href="/recipes/<%= recipe.id %>"><%= recipe.title %></a></p>
+  <% end %>
