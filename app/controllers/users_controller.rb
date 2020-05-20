@@ -1,6 +1,7 @@
 class UsersController < ApplicationController
 
     get "/signup" do
+        if_logged_in_redirect
         erb :create_users
     end
 
@@ -18,6 +19,7 @@ class UsersController < ApplicationController
     end
 
     get "/login" do
+        if_logged_in_redirect
         erb :'users/login'
     end
 
@@ -35,6 +37,7 @@ class UsersController < ApplicationController
 
     get '/users/:id' do
         @user = User.find_by(id: params[:id])
+        if_not_logged_in_redirect
 
         erb :'/users/show'
     end
