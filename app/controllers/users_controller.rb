@@ -31,6 +31,7 @@ class UsersController < ApplicationController
             
             redirect "/users/#{@user.id}"
         else
+            flash[:warning] = "Invalid username or password, please try again."
             redirect '/login'
         end
     end
