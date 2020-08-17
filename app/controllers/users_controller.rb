@@ -14,6 +14,7 @@ class UsersController < ApplicationController
             
             erb :'/users/show'
         else
+            flash[:warning] = "Invalid username, password or email, please try again."            
             redirect '/signup'
         end
     end
