@@ -13,7 +13,7 @@ class RecipesController < ApplicationController
     end
 
     post '/recipes' do
-        @recipe = Recipe.create(title: params[:title], ingredients: params[:ingredients], instructions: params[:instructions])
+        @recipe = Recipe.create(title: params[:title], user_id: current_user.id, ingredients: params[:ingredients], instructions: params[:instructions])
 
         redirect "/recipes/#{@recipe.id}"
     end
