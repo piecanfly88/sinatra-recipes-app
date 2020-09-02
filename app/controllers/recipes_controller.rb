@@ -32,6 +32,7 @@ class RecipesController < ApplicationController
         @recipe = Recipe.find(params[:id])
 
         if authorized_to_edit?(@recipe)
+            flash[:message] = "You have successfully edited your recipe!"
             erb :'/recipes/edit'
         else
             redirect "/users/#{current_user.id}"
@@ -47,6 +48,8 @@ class RecipesController < ApplicationController
 
         @recipe.update(title: params[:title], ingredients: params[:ingredients], instructions: params[:instructions])
 
+        flash[:message] = "You have successfully created a recipe!"
+
         redirect "/recipes/#{@recipe.id}"
     end 
 
@@ -55,7 +58,9 @@ class RecipesController < ApplicationController
         
         @recipe.destroy
 
-        redirect '/users/show'
+        flash[:message] = "You have successfully deleted your recipe!"
+
+        redirect '/recipes'
     end
     
 end
