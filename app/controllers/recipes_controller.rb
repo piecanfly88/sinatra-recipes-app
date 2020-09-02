@@ -15,6 +15,8 @@ class RecipesController < ApplicationController
     post '/recipes' do
         @recipe = Recipe.create(title: params[:title], user_id: current_user.id, ingredients: params[:ingredients], instructions: params[:instructions])
 
+        flash[:message] = "You have successfully created a recipe!"
+
         redirect "/recipes/#{@recipe.id}"
     end
     
